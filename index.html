@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sejal Sunil Kadam — MBA Analytics Portfolio</title>
+<meta name="description" content="Sejal Sunil Kadam — MBA Analytics, IIM Kashipur. Analytics, GenAI and product/program management portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:      #EEF1EF;
+    --paper-line: #C9D0CB;
+    --ink:        #1B2430;
+    --ink-soft:   #566058;
+    --verified:   #2F6F5E;
+    --verified-bg:#DEE8E3;
+    --amber:      #B8791F;
+    --amber-bg:   #F1E3CC;
+    --card:       #F7F8F6;
+    --white:      #FFFFFF;
+    --max-w: 860px;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{ background:var(--verified-bg); color:var(--verified); }
+  img{ max-width:100%; display:block; }
+
+  a{ color:var(--verified); text-decoration-thickness:1px; text-underline-offset:3px; }
+  a:hover{ color:var(--amber); }
+  a:focus-visible, button:focus-visible{ outline:2px solid var(--amber); outline-offset:3px; }
+
+  .wrap{ max-width:var(--max-w); margin:0 auto; padding:0 24px; }
+
+  /* ---------- Sticky nav ---------- */
+  nav.topnav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(238,241,239,.92);
+    backdrop-filter:saturate(140%) blur(6px);
+    border-bottom:1px solid var(--paper-line);
+  }
+  .navbar{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px;
+  }
+  .nav-name{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px; letter-spacing:.08em;
+    color:var(--ink); text-decoration:none; font-weight:600;
+  }
+  .nav-links{ display:flex; gap:22px; flex-wrap:wrap; }
+  .nav-links a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px; letter-spacing:.03em;
+    color:var(--ink-soft); text-decoration:none;
+  }
+  .nav-links a:hover{ color:var(--verified); }
+  .nav-cv{
+    border:1px solid var(--ink); padding:6px 12px;
+    color:var(--ink) !important;
+  }
+  .nav-cv:hover{ background:var(--ink); color:var(--paper) !important; }
+  .nav-toggle{ display:none; }
+
+  /* ---------- Hero ---------- */
+  header.hero{ padding:56px 0 0; }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:26px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 152px 1fr;
+    gap:32px;
+    align-items:center;
+    padding-bottom:30px;
+    border-bottom:2px solid var(--ink);
+  }
+  .hero-photo{
+    width:152px; height:152px; border-radius:50%;
+    overflow:hidden; position:relative;
+    border:3px solid var(--white);
+    box-shadow:0 0 0 1px var(--ink), 0 6px 18px rgba(27,36,48,.15);
+    background:var(--verified);
+  }
+  .hero-photo img{ width:100%; height:100%; object-fit:cover; }
+  .photo-fallback{
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-family:'Spectral', serif; font-weight:600; font-size:2.6rem; color:#fff;
+    background:linear-gradient(160deg, var(--verified), #234D40);
+  }
+  h1.name{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:clamp(2rem, 4.6vw, 2.9rem);
+    margin:0 0 6px;
+    letter-spacing:-0.01em;
+  }
+  .role-line{
+    font-family:'Spectral', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    color:var(--ink-soft);
+    margin:0 0 18px;
+  }
+  .contact-row{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px 0;
+    margin-bottom:20px;
+  }
+  .contact-row span:not(:last-child)::after{ content:"  ·  "; color:var(--paper-line); }
+  .contact-row a{ color:var(--ink); }
+
+  .cta-row{ display:flex; gap:12px; flex-wrap:wrap; }
+  .btn{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:.04em;
+    text-decoration:none;
+    padding:10px 16px;
+    border:1px solid var(--ink);
+    color:var(--ink);
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:background .15s ease, color .15s ease;
+    background:none;
+    cursor:pointer;
+  }
+  .btn:hover{ background:var(--ink); color:var(--paper); }
+  .btn.primary{ background:var(--verified); border-color:var(--verified); color:#fff; }
+  .btn.primary:hover{ background:var(--amber); border-color:var(--amber); color:#fff; }
+
+  /* Table of contents strip */
+  .toc{
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:0;
+    border-bottom:1px solid var(--paper-line);
+  }
+  .toc a{
+    text-decoration:none;
+    padding:14px 6px;
+    text-align:center;
+    border-right:1px solid var(--paper-line);
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.05em;
+    color:var(--ink-soft);
+  }
+  .toc a:nth-child(4n){ border-right:none; }
+  .toc a span{ display:block; color:var(--verified); font-size:10px; margin-bottom:3px; }
+  .toc a:hover{ background:var(--card); color:var(--ink); }
+
+  /* ---------- Exhibit sections ---------- */
+  section.exhibit{
+    padding:52px 0 8px;
+    scroll-margin-top:70px;
+    opacity:0;
+    transform:translateY(14px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  section.exhibit.in{ opacity:1; transform:translateY(0); }
+
+  .exhibit-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:10px;
+    margin-bottom:26px;
+  }
+  .exhibit-label{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.1em;
+    color:var(--verified);
+    white-space:nowrap;
+  }
+  .exhibit-head h2{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:1.4rem;
+    margin:0;
+  }
+
+  .summary p{ font-size:1.02rem; max-width:66ch; }
+  .summary p + p{ margin-top:14px; }
+
+  .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.05em;
+    padding:3px 8px;
+    border-radius:2px;
+    white-space:nowrap;
+  }
+  .tag.verified{ background:var(--verified-bg); color:var(--verified); }
+  .tag.metric{ background:var(--amber-bg); color:var(--amber); }
+
+  /* Education table */
+  .edu-table{ width:100%; border-collapse:collapse; }
+  .edu-table th{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--ink-soft); text-align:left;
+    padding:0 10px 10px 0; border-bottom:1px solid var(--ink);
+  }
+  .edu-table td{
+    padding:12px 10px 12px 0;
+    border-bottom:1px solid var(--paper-line);
+    font-size:.95rem; vertical-align:top;
+  }
+  .edu-table td.degree{ font-weight:600; font-family:'Spectral', serif; font-size:1rem; }
+  .edu-table td.score{ font-weight:600; white-space:nowrap; }
+  .edu-table tr:last-child td{ border-bottom:none; }
+
+  /* Project entries */
+  .entry{
+    background:var(--card);
+    border:1px solid var(--paper-line);
+    padding:24px 26px;
+    margin-bottom:22px;
+  }
+  .entry-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .entry-title{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:1.2rem;
+    margin:0 0 4px;
+  }
+  .entry-meta{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    color:var(--ink-soft);
+    margin:0 0 12px;
+  }
+  .entry ul{ margin:14px 0 0; padding-left:18px; }
+  .entry li{ font-size:.95rem; margin-bottom:6px; }
+  .entry .tags{ display:flex; gap:14px; flex-wrap:wrap; margin-top:16px; align-items:center; }
+  .entry a.repo, .entry a.demo{ font-family:'IBM Plex Mono', monospace; font-size:12px; }
+
+  /* Media placeholders — screenshots / video */
+  .media-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:14px;
+    margin-top:16px;
+  }
+  .media-box{
+    aspect-ratio:16/10;
+    border:1.5px dashed var(--paper-line);
+    background:repeating-linear-gradient(135deg, var(--white), var(--white) 10px, #EEF0EE 10px, #EEF0EE 20px);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:14px;
+    color:var(--ink-soft);
+    position:relative;
+    overflow:hidden;
+  }
+  .media-box img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+  .media-box .ph-icon{ font-size:22px; margin-bottom:6px; }
+  .media-box .ph-label{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.03em; }
+  .media-box .ph-path{ font-family:'IBM Plex Mono', monospace; font-size:9.5px; color:var(--paper-line); margin-top:4px; word-break:break-all; padding:0 6px; }
+
+  .video-box{
+    aspect-ratio:16/9;
+    margin-top:16px;
+  }
+  .video-box iframe{ width:100%; height:100%; border:0; }
+
+  .placeholder-note{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:10.5px;
+    color:var(--amber);
+    background:var(--amber-bg);
+    display:inline-block;
+    padding:2px 8px;
+    margin-top:10px;
+    border-radius:2px;
+  }
+
+  /* Experience ledger — table-like rows */
+  .ledger-row{
+    display:grid;
+    grid-template-columns: 150px 1fr;
+    gap:18px;
+    padding:20px 0;
+    border-bottom:1px solid var(--paper-line);
+  }
+  .ledger-row:last-child{ border-bottom:none; }
+  .ledger-date{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    padding-top:3px;
+  }
+  .ledger-role{
+    font-family:'Spectral', serif;
+    font-weight:600;
+    font-size:1.08rem;
+    margin:0 0 2px;
+  }
+  .ledger-org{ font-size:.92rem; color:var(--ink-soft); margin:0 0 10px; font-style:italic; }
+  .ledger-role-block ul{ margin:0; padding-left:18px; }
+  .ledger-role-block li{ margin-bottom:6px; font-size:.95rem; }
+  .ledger-role-block li b{ color:var(--verified); font-weight:600; }
+
+  /* Capabilities / skills */
+  .cap-group{ margin-bottom:18px; }
+  .cap-group h3{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin:0 0 10px;
+  }
+  .cap-pills{ display:flex; flex-wrap:wrap; gap:8px; }
+  .pill{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    padding:5px 10px;
+    background:var(--card);
+    border:1px solid var(--paper-line);
+    color:var(--ink);
+  }
+
+  /* POR + achievements */
+  .por-item{ margin-bottom:22px; }
+  .por-item h3{ font-family:'Spectral', serif; font-size:1.08rem; margin:0 0 2px; }
+  .por-item .sub{ font-size:.88rem; color:var(--ink-soft); font-style:italic; margin:0 0 8px; }
+  .por-item ul{ margin:0; padding-left:18px; }
+  .por-item li{ font-size:.95rem; margin-bottom:5px; }
+
+  .achieve-row{
+    display:flex; justify-content:space-between; gap:16px;
+    padding:10px 0; border-bottom:1px dashed var(--paper-line);
+    font-size:.93rem;
+  }
+  .achieve-row:last-child{ border-bottom:none; }
+  .achieve-row .yr{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft); white-space:nowrap; }
+
+  /* Contact / closing */
+  .contact-block{
+    background:var(--ink);
+    color:var(--paper);
+    padding:44px 0;
+    margin-top:60px;
+    text-align:center;
+  }
+  .contact-block h2{ font-family:'Spectral', serif; font-size:1.7rem; margin:0 0 10px; }
+  .contact-block p{ color:#B9C2BC; margin:0 0 22px; }
+  .contact-block .cta-row{ justify-content:center; }
+  .contact-block .btn{ border-color:var(--paper); color:var(--paper); }
+  .contact-block .btn:hover{ background:var(--paper); color:var(--ink); }
+  .contact-block .btn.primary{ background:var(--verified); border-color:var(--verified); }
+
+  /* Footer */
+  footer{
+    padding:22px 0 50px;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+  footer a{ color:var(--ink-soft); }
+
+  @media (max-width:700px){
+    .nav-links{ display:none; }
+    .hero-grid{ grid-template-columns:1fr; text-align:center; }
+    .hero-photo{ margin:0 auto; }
+    .contact-row{ justify-content:center; }
+    .cta-row{ justify-content:center; }
+    .toc{ grid-template-columns:repeat(2,1fr); }
+    .toc a:nth-child(2n){ border-right:none; }
+    .toc a:nth-child(4n){ border-right:1px solid var(--paper-line); }
+    .ledger-row{ grid-template-columns:1fr; gap:4px; }
+    .eyebrow{ flex-direction:column; gap:4px; }
+    footer{ flex-direction:column; text-align:center; justify-content:center; }
+    .media-grid{ grid-template-columns:1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    section.exhibit{ transition:none; opacity:1; transform:none; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="navbar">
+    <a href="#top" class="nav-name">S. KADAM</a>
+    <div class="nav-links">
+      <a href="#summary">About</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#por">Leadership</a>
+      <a href="#contact" class="nav-cv">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <header class="hero" id="top">
+    <div class="eyebrow">
+      <span>Portfolio · Exhibit Index</span>
+      <span>Last verified — July 2026</span>
+    </div>
+    <div class="hero-grid">
+      <div class="hero-photo">
+        <!-- To add your photo: upload a square image named "photo.jpg" into an "assets" folder
+             next to this file, so the path is assets/photo.jpg. If it's missing, initials show instead. -->
+        <img src="assets/photo.jpg" alt="Sejal Sunil Kadam"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <div class="photo-fallback" style="display:none;">SK</div>
+      </div>
+      <div>
+        <h1 class="name">Sejal Sunil Kadam</h1>
+        <p class="role-line">MBA — Analytics, IIM Kashipur (2025–27) · Analytics / GenAI / Product &amp; Program Management</p>
+        <div class="contact-row">
+          <span>Mumbai, India</span>
+          <span>+91-9324214592</span>
+          <span><a href="mailto:sejal.mbaa25135@iimkashipur.ac.in">sejal.mbaa25135@iimkashipur.ac.in</a></span>
+          <span><a href="https://www.linkedin.com/in/sejal-kadam-667357226/" target="_blank" rel="noopener">LinkedIn</a></span>
+          <span><a href="https://github.com/sejalkadam" target="_blank" rel="noopener">GitHub</a></span>
+        </div>
+        <div class="cta-row">
+          <a class="btn primary" href="Sejal_Kadam_CV_7July.pdf" download>&#8595; Download CV (PDF)</a>
+          <a class="btn" href="mailto:sejal.mbaa25135@iimkashipur.ac.in">Get in touch</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="toc">
+      <a href="#summary"><span>A</span>Summary</a>
+      <a href="#education"><span>B</span>Education</a>
+      <a href="#experience"><span>C</span>Experience</a>
+      <a href="#internships"><span>D</span>Internships</a>
+      <a href="#projects"><span>E</span>Projects</a>
+      <a href="#skills"><span>F</span>Skills</a>
+      <a href="#por"><span>G</span>Leadership</a>
+      <a href="#achievements"><span>H</span>Achievements</a>
+    </div>
+  </header>
+
+  <section class="exhibit" id="summary">
+    <div class="exhibit-head">
+      <span class="exhibit-label">EXHIBIT A</span>
+      <h2>Summary</h2>
+    </div>
+    <div class="summary">
+      <p>I work at the point where messy data becomes a decision someone can act on — a forecasting pipeline that replaces intuition-driven planning, a verification engine that stops an LLM from asserting something no source supports, a migration plan that ships on a fixed deadline without breaking compliance. <span class="tag verified">verified</span></p>
+      <p>Before IIM Kashipur, I spent two years shipping software for healthcare and BFSI clients, and two summers building forecasting and computer-vision systems for FMCG and banking operations. The common thread: quantify the problem first, then build the smallest system that solves it — <span class="tag metric">21% WMAPE</span> <span class="tag metric">90%+ accuracy</span> <span class="tag metric">40% ↑ responsiveness</span></p>
+    </div>
+  </section>
+
+  <section class="exhibit" id="education">
+    <div class="exhibit-head">
+      <span class="exhibit-label">EXHIBIT B</span>
+      <h2>Education</h2>
+    </div>
+    <table class="edu-table">
+      <thead>
+        <tr><th>Degree</th><th>Institute</th><th>Year</th><th>Score</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="degree">MBA – Analytics</td>
+          <td>Indian Institute of Management, Kashipur</td>
+          <td>2025 – 2027</td>
+          <td class="score">—</td>
+        </tr>
+        <tr>
+          <td class="degree">B.Tech – CSE</td>
+          <td>Maharashtra Institute of Technology, Pune</td>
+          <td>2019 – 2023</td>
+          <td class="score">9.53 / 10 CGPA</td>
+        </tr>
+        <tr>
+          <td class="degree">XII – State Board</td>
+          <td>Pace Junior College, Navi Mumbai</td>
+          <td>2019</td>
+          <td class="score">73.54%</td>
+        </tr>
+        <tr>
+          <td class="degree">X – CBSE</td>
+          <td>D.A.V Public School, Navi Mumbai</td>
+          <td>2017</td>
+          <td class="score">10 / 10 CGPA</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="exhibit" id="experience">
+    <div class="exhibit-head">
+      <span class="exhibit-label">EXHIBIT C</span>
+      <h2>Work Experience</h2>
+    </div>
+
+    <div class="ledger-row">
+      <div class="ledger-date">Jul 2023 – Feb 2025</div>
+      <div class="ledger-role-block">
+        <p class="ledger-role">Associate Software Engineer</p>
+        <p class="ledger-org">Dure Technologies, Mumbai</p>
+        <ul>
+          <li>Drove a full-scale Angular 1 to React 18 migration for a mission-critical healthcare platform within a 3-month deadline, rewriting core components and hardening FHIR-compliant data security, improving <b>UI responsiveness by 40%</b> and <b>scalability by 30%</b></li>
+          <li>Delivered sprint-based feature enhancements across 2 healthcare products (One Data Connect, FP Data Pro), collaborating with cross-functional teams and authoring technical documentation to ensure smooth integration</li>
+          <li>Engineered <b>15+ backend APIs</b> and <b>20+ product screens</b> for healthcare data interoperability, and remediated critical VAPT findings – closing data exposure and authentication gaps to strengthen platform security compliance</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="exhibit" id="internships">
+    <div class="exhibit-head">
+      <span class="exhibit-label">EXHIBIT D</span>
+      <h2>Internships</h2>
+    </div>
+
+    <div class="ledger-row">
+      <div class="ledger-date">Apr – May 2026</div>
+      <div class="ledger-role-block">
+        <p class="ledger-role">Summer Intern <span style="font-weight:400; font-style:italic; color:var(--ink-soft); font-size:.85rem;">| LoadOpt Pro</span></p>
+        <p class="ledger-org">Godrej Agrovet, Mumbai</p>
+        <ul>
+          <li>Diagnosed intuition-driven planning behind returns rising <b>17% to 32%</b> (FY24–FY26), and automated a Python forecasting pipeline at DPU-level (SKU×Region×Month) across 155 SKUs/11 zones, hitting <b>~21% WMAPE</b> at annual level</li>
+          <li>Built 30 models across 8 demand-pattern buckets (Croston, Holt-Winters, Exponential Smoothing) and an ABC-XYZ segmentation to classify SKUs by sales and variability, visualized via a Power BI Dashboard</li>
+          <li>Formulated LoadOpt Pro, a 3D bin-packing tool (NP-hard) with gravity-validated placement and a 50/50 volume-weight efficiency score across 8 fleet truck types, cutting manual dispatch planning via automated multi-container allocation</li>
+        </ul>
+
+        <!-- ===== Power BI dashboard screenshots ===== -->
+        <div class="media-grid">
+          <div class="media-box">
+            <img src="assets/loadopt-dashboard-1.png" alt="Demand forecasting Power BI dashboard"
+                 onerror="this.style.display='none';">
+            <div class="ph-icon">&#128202;</div>
+            <div class="ph-label">Dashboard 1 — Demand Forecasting</div>
+            <div class="ph-path">assets/loadopt-dashboard-1.png</div>
+          </div>
+          <div class="media-box">
+            <img src="assets/loadopt-dashboard-2.png" alt="ABC-XYZ segmentation Power BI dashboard"
+                 onerror="this.style.display='none';">
+            <div class="ph-icon">&#128202;</div>
+            <div class="ph-label">Dashboard 2 — ABC-XYZ Segmentation</div>
+            <div class="ph-path">assets/loadopt-dashboard-2.png</div>
+          </div>
+        </div>
+
+        <div class="tags">
+          <a class="repo" href="https://github.com/sejalkadam/LoadOpt-Pro.git" target="_blank" rel="noopener">View repository →</a>
+          <a class="demo" href="#" target="_blank" rel="noopener">Live demo → <span class="placeholder-note">add link</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="ledger-row">
+      <div class="ledger-date">Jul – Dec 2022</div>
+      <div class="ledger-role-block">
+        <p class="ledger-role">Software Intern</p>
+        <p class="ledger-org">BizAmica Software Pvt Ltd., Pune</p>
+        <ul>
+          <li>Developed a signature verification model for a nationalized bank using computer vision (OpenCV), achieving <b>90%+ accuracy</b> distinguishing forged from genuine signatures</li>
+          <li>Implemented an OCR/ICR based document processing pipeline (ML, NLP, Neural Networks) to auto-classify and extract data from handwritten, multilingual bank documents</li>
+          <li>Deployed AI-driven document automation across <b>5+ industries</b>, replacing error-prone workflows with faster, high-volume processing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="exhibit" id="projects">
+    <div class="exhibit-head">
+      <span class="exhibit-label">EXHIBIT E</span>
+      <h2>Projects</h2>
+    </div>
+
+    <div class="entry">
+      <div class="entry-top">
+        <div>
+          <p class="entry-title">VeritasIQ — Verified Intelligence</p>
+          <p class="entry-meta">GenAI · LLM · RAG · Semantic Search · Vector DB · NLP</p>
+        </div>
+        <span class="tag verified">verified</span>
+      </div>
+      <ul>
+        <li>Architected a RAG-based verification engine cross-validating company data across 5 independent sources (exchange, Wikipedia, news, filings, ratios) – auto-tagging claims Verified / Conflicting / Unverified instead of trusting single-source or raw LLM output</li>
+        <li>Designed a semantic claim-matching + scoring pipeline (LangChain, ChromaDB, Sentence-Transformers embeddings, cosine similarity, 8% tolerance model) to resolve cross-source conflicts into one Verification Score</li>
+        <li>Integrated Groq LLM to generate SWOT / Porter's / Bull-vs-Bear narratives grounded in pre-verified data, reducing hallucination risk</li>
+      </ul>
+
+      <!-- ===== Demo video / walkthrough embed =====
+           Recommended: record a 30-60s screen capture, upload as an UNLISTED YouTube video,
+           then replace YOUR_VIDEO_ID below with the ID from the video's URL. -->
+      <div class="media-box video-box">
+        <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" title="VeritasIQ walkthrough"
+                allowfullscreen style="display:none;" id="veritas-frame"></iframe>
+        <div class="ph-icon">&#127916;</div>
+        <div class="ph-label">Demo walkthrough video</div>
+        <div class="ph-path">replace YOUR_VIDEO_ID with your YouTube video ID</div>
+      </div>
+
+      <div class="tags">
+        <a class="repo" href="https://github.com/sejalkadam/VeritasIQ-Verified-Intelligence.git" target="_blank" rel="noopener">View repository →</a>
+        <a class="demo" href="#" target="_blank" rel="noopener">Live demo → <span class="placeholder-note">add link</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="exhibit" id="skills">
+    <div class="exhibit-head">
+      <span class="exhibit-label">EXHIBIT F</span>
+      <h2>Skills</h2>
+    </div>
+
+    <div class="cap-group">
+      <h3>Analytics &amp; BI Tools</h3>
+      <div class="cap-pills">
+        <span class="pill">Power BI</span><span class="pill">Tableau</span><span class="pill">Excel (Advanced)</span>
+        <span class="pill">SQL</span><span class="pill">Python</span><span class="pill">GitHub</span>
+        <span class="pill">Statistical Forecasting</span>
+      </div>
+    </div>
+    <div class="cap-group">
+      <h3>GenAI &amp; Applied AI</h3>
+      <div class="cap-pills">
+        <span class="pill">GenAI</span><span class="pill">LLM</span><span class="pill">RAG</span><span class="pill">NLP</span>
+        <span class="pill">Prompt Engineering</span><span class="pill">Vector Databases</span>
+        <span class="pill">Machine Learning</span><span class="pill">LangChain</span>
+      </div>
+    </div>
+    <div class="cap-group">
+      <h3>Methods &amp; Frameworks</h3>
+      <div class="cap-pills">
+        <span class="pill">Agile/Scrum</span><span class="pill">Lean Six Sigma</span>
+        <span class="pill">Product Lifecycle Management</span><span class="pill">EDA</span>
+        <span class="pill">Stakeholder Management</span><span class="pill">ETL</span><span class="pill">Jira</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="exhibit" id="por">
+    <div class="exhibit-head">
+      <span class="exhibit-label">EXHIBIT G</span>
+      <h2>Positions of Responsibility</h2>
+    </div>
+
+    <div class="por-item">
+      <h3>Exchange Coordinator</h3>
+      <p class="sub">International Relations Committee, IIM Kashipur · 2025 – Present</p>
+      <ul>
+        <li>Orchestrated exchange programs across 10+ global partner universities, boosting uptake through stakeholder communication</li>
+        <li>Spearheaded international events, MUNs, and cross-cultural summits, engaging 150+ participants and elevating global footprint</li>
+        <li>Negotiated and onboarded new university alliances while deepening existing MOUs, expanding global exposure for 500+ students</li>
+      </ul>
+    </div>
+    <div class="por-item">
+      <h3>Organizing Committee Member</h3>
+      <p class="sub">Aarohan, MIT-WPU, Pune · 2019 – 2021</p>
+      <ul>
+        <li>Led end-to-end execution of Aarohan, MIT-WPU's 3-day flagship cultural fest, achieving 1000+ participant turnout</li>
+        <li>Oversaw artist coordination and seamless logistics across 3 marquee events – Pronite, Comedy Nite, Youtuber Fest and Theatre Fest</li>
+        <li>Mobilised 200+ volunteers across community drives including Run for Peace, Blood Donation and Tree Plantation campaigns</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="exhibit" id="achievements">
+    <div class="exhibit-head">
+      <span class="exhibit-label">EXHIBIT H</span>
+      <h2>Extra-Curricular &amp; Academic Achievements</h2>
+    </div>
+    <div class="achieve-row"><span>Published IEEE research paper, <em>Star Galaxy Classification using DL</em> — achieved high accuracy image classification model</span><span class="yr">2024</span></div>
+    <div class="achieve-row"><span>Completed 6 years of Bharatanatyam training at Indian Cultural Academy; awarded distinction for cultural excellence</span><span class="yr">2022</span></div>
+    <div class="achieve-row"><span>Volunteered with iVolunteer (NGO) — facilitated educational and life-skills sessions for underprivileged children</span><span class="yr">2019</span></div>
+  </section>
+
+</div>
+
+<div class="contact-block" id="contact">
+  <h2>Let's talk</h2>
+  <p>Open to Analytics, GenAI, Product &amp; Program Management roles.</p>
+  <div class="cta-row">
+    <a class="btn primary" href="mailto:sejal.mbaa25135@iimkashipur.ac.in">Email me</a>
+    <a class="btn" href="https://www.linkedin.com/in/sejal-kadam-667357226/" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="btn" href="Sejal_Kadam_CV_7July.pdf" download>Download CV</a>
+  </div>
+</div>
+
+<div class="wrap">
+  <footer>
+    <span>© 2026 Sejal Sunil Kadam</span>
+    <span><a href="mailto:sejal.mbaa25135@iimkashipur.ac.in">sejal.mbaa25135@iimkashipur.ac.in</a> · <a href="https://www.linkedin.com/in/sejal-kadam-667357226/" target="_blank" rel="noopener">LinkedIn</a></span>
+  </footer>
+</div>
+
+<script>
+  const sections = document.querySelectorAll('.exhibit');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.12 });
+  sections.forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>
